@@ -1,0 +1,15 @@
+{
+  "name": "lz77-nodejs-streams",
+  "version": "1.0.0",
+  "description": "Compression and decompression streams for the Lempel-Ziv 77 compression algorithm. The compression stream convert streams of bytes into a stream of JSON objects that represent the data in their compressed form. The decompression stream produces the input byte stream from the JSON objects.",
+  "main": "index.js",
+  "repository": "https://github.com/spacekitcat/lz77-nodejs-streams",
+  "author": "Lisa Burton",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-jest": "^24.0.0",
+    "jest": "^24.0.0"
+  }
+}
