@@ -3657,6 +3657,13 @@ throat@^4.0.0:
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
+tiny-toatie-cache@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tiny-toatie-cache/-/tiny-toatie-cache-1.0.1.tgz#b88254e07f766dd5e89d43e7827f79e450d88a73"
+  integrity sha512-xRkSXw5M3ERu8zrc5pmIYHqwXIK89DUzy+mm5Hrxy6bahQHGNgUV/7IHr2CHGU49ZyeAKq2xnL2sOp2aUTr4Sg==
+  dependencies:
+    cloakroom-smart-buffer-proxy "^2.0.6"
+
 tmpl@1.0.x:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"

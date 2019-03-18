@@ -85,19 +85,19 @@ describe('The `generator` function', () => {
             });
         });
 
-        describe('and a single byte dictionary with matches is specified', () => {
-            it('should return the expected result', () => {
-                const specifiedDictionary = Buffer.from([0x4A]);
-                const specifiedReadBuffer = Buffer.from([0x4A, 0xDD]);
+        // describe('and a single byte dictionary with matches is specified', () => {
+        //     it('should return the expected result', () => {
+        //         const specifiedDictionary = Buffer.from([0x4A]);
+        //         const specifiedReadBuffer = Buffer.from([0x4A, 0xDD]);
 
-                expect(generator(specifiedDictionary, specifiedReadBuffer)).toMatchObject({
-                    token: specifiedReadBuffer.slice(1, 2),
-                    prefix: {
-                        fromPosition: 0,
-                        toPosition: 1
-                    }
-                });
-            });
-        });
+        //         expect(generator(specifiedDictionary, specifiedReadBuffer)).toMatchObject({
+        //             token: specifiedReadBuffer.slice(1, 2),
+        //             prefix: {
+        //                 fromPosition: 0,
+        //                 toPosition: 1
+        //             }
+        //         });
+        //     });
+        // });
     });
 });

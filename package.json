@@ -14,5 +14,8 @@
   },
   "scripts": {
     "test": "jest --coverage"
+  },
+  "dependencies": {
+    "tiny-toatie-cache": "^1.0.1"
   }
 }
