@@ -988,6 +988,11 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
+cloakroom-smart-buffer-proxy@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/cloakroom-smart-buffer-proxy/-/cloakroom-smart-buffer-proxy-2.0.6.tgz#9a48a3513cb7dc1855e07ac58e4dc07dac341a12"
+  integrity sha512-wiijH+VZpwTE7TZmXUkOQkSsxL50t5j3em/+HqvZFr4VVEtERYXV239LGjPtCUz1/oIujn9DR04R1OF6dB5lTQ==
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -3657,10 +3662,10 @@ throat@^4.0.0:
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
-tiny-toatie-cache@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/tiny-toatie-cache/-/tiny-toatie-cache-1.0.1.tgz#b88254e07f766dd5e89d43e7827f79e450d88a73"
-  integrity sha512-xRkSXw5M3ERu8zrc5pmIYHqwXIK89DUzy+mm5Hrxy6bahQHGNgUV/7IHr2CHGU49ZyeAKq2xnL2sOp2aUTr4Sg==
+tiny-toatie-cache@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-toatie-cache/-/tiny-toatie-cache-1.0.3.tgz#dc02e27fadb2f0e8f86866f6c693e6bdc7b415ff"
+  integrity sha512-2WU/pzEUuyLZIslACZj45/lOM8PvFQMVAo0o5xXWEf0g9KYs+65Bat+l71a8F+AnxbqHCUzcJysLmf4G1TC2hA==
   dependencies:
     cloakroom-smart-buffer-proxy "^2.0.6"
 
