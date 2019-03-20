@@ -1,38 +1,76 @@
 import InputRunLengthSearch from '../src/input-run-length-search';
+import Dictionary from '../src/dictionary';
 
 describe('The `findMatchingSubString` function', () => {
   describe('when the internal buffer is empty', () => {
-    describe('and input is empty', () => {
+    describe('and the dictionary is empty', () => {
       it('should return `null`', () => {
         const sut = new InputRunLengthSearch();
-        sut.append(Buffer.from([]));
-        expect(sut.findMatchingSubString(Buffer.from([]))).toBe(null);
+        const dictionary = new Dictionary();
+        const findSpy = jest.spyOn(dictionary, 'find');
+
+        expect(sut.findMatchingSubString(dictionary)).toBe(null);
+        expect(findSpy).toHaveBeenCalled();
       });
     });
 
-    describe('and `input` is of length 1', () => {
+    describe('and the dictionary has a length of 1', () => {
       it('should return `null`', () => {
         const sut = new InputRunLengthSearch();
-        sut.append(Buffer.from([]));
-        expect(sut.findMatchingSubString(Buffer.from([0x4C]))).toBe(null);        
+        const dictionary = new Dictionary();
+        const findSpy = jest.spyOn(dictionary, 'find');
+
+        expect(sut.findMatchingSubString(dictionary)).toBe(null);
+        expect(findSpy).toHaveBeenCalled();
       });
     });
   });
 
   describe('when the internal buffer is of length 1', () => {
-    describe('and `input` is empty', () => {
+    describe('and the dictionary is empty', () => {
       it('should return `null`', () => {
+        const data = Buffer.from([0x79]);
         const sut = new InputRunLengthSearch();
-        sut.append(Buffer.from([0x4c]));
-        expect(sut.findMatchingSubString(Buffer.from([]))).toBe(null);
+        const dictionary = new Dictionary();
+        const findSpy = jest.spyOn(dictionary, 'find');
+        sut.append(data);
+
+        expect(sut.findMatchingSubString(dictionary)).toBe(null);
+        expect(findSpy).toHaveBeenCalledWith(data);
       });
     });
 
-    describe('and `input` is a non-match of length 1', () => {
-      it('should return `null`', () => {
+    describe('and the dictionary is the same as the internal buffer', () => {
+      it('should return the expected data', () => {
+        const data = Buffer.from([0x4c]);
         const sut = new InputRunLengthSearch();
-        sut.append(Buffer.from([0x4C]));
-        expect(sut.findMatchingSubString(Buffer.from([0x53]))).toBe(null);        
+        const dictionary = new Dictionary();
+        const findSpy = jest.spyOn(dictionary, 'find');
+
+        sut.append(data);
+        dictionary.append(data);
+
+        expect(sut.findMatchingSubString(dictionary)).toMatchObject(
+          dictionary.find(data)
+        );
+        expect(findSpy).toHaveBeenCalledWith(Buffer.from(data));
+      });
+    });
+  });
+
+  describe('when the internal buffer is of length 2', () => {
+    describe('and the dictionary is the same as the internal buffer', () => {
+      it('should return `null`', () => {
+        const data = Buffer.from([0x12, 0x85]);
+        const sut = new InputRunLengthSearch();
+        const dictionary = new Dictionary();
+        const findSpy = jest.spyOn(dictionary, 'find');
+
+        sut.append(data);
+
+        expect(sut.findMatchingSubString(dictionary)).toBe(null);
+        expect(findSpy).toHaveBeenCalledWith(Buffer.from([0x12]));
+        expect(findSpy).toHaveBeenCalledWith(Buffer.from([0x12, 0x85]));
       });
     });
   });

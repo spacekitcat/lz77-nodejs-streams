@@ -8,8 +8,12 @@ class InputRunLengthSearch {
     this.internalBuffer = Buffer.concat([this.internalBuffer, appendList]);
   }
 
-  findMatchingSubString(input, matchCriteria) {
-    return null;
+  findMatchingSubString(dictionary) {
+    for (let i = 0; i < this.internalBuffer.length; ++i) {
+      dictionary.find(this.internalBuffer.slice(0, i));
+    }
+
+    return dictionary.find(this.internalBuffer);
   }
 }
 
