@@ -1,3 +1,5 @@
+import partitionShrink from '../src/binary-search/partition-shrink';
+
 class InputRunLengthSearch {
   constructor() {
     this.internalBuffer = Buffer.from([]);
@@ -9,11 +11,8 @@ class InputRunLengthSearch {
   }
 
   findMatchingSubString(dictionary) {
-    for (let i = 0; i < this.internalBuffer.length; ++i) {
-      dictionary.find(this.internalBuffer.slice(0, i));
-    }
-
-    return dictionary.find(this.internalBuffer);
+    const partition = partitionShrink(0, this.internalBuffer.length);
+    return dictionary.find(this.internalBuffer.slice(0, partition + 1));
   }
 }
 

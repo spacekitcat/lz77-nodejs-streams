@@ -53,24 +53,8 @@ describe('The `findMatchingSubString` function', () => {
         expect(sut.findMatchingSubString(dictionary)).toMatchObject(
           dictionary.find(data)
         );
+        expect(findSpy).toHaveBeenCalledTimes(2);
         expect(findSpy).toHaveBeenCalledWith(Buffer.from(data));
-      });
-    });
-  });
-
-  describe('when the internal buffer is of length 2', () => {
-    describe('and the dictionary is the same as the internal buffer', () => {
-      it('should return `null`', () => {
-        const data = Buffer.from([0x12, 0x85]);
-        const sut = new InputRunLengthSearch();
-        const dictionary = new Dictionary();
-        const findSpy = jest.spyOn(dictionary, 'find');
-
-        sut.append(data);
-
-        expect(sut.findMatchingSubString(dictionary)).toBe(null);
-        expect(findSpy).toHaveBeenCalledWith(Buffer.from([0x12]));
-        expect(findSpy).toHaveBeenCalledWith(Buffer.from([0x12, 0x85]));
       });
     });
   });
