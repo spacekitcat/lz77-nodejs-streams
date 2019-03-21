@@ -12,8 +12,8 @@ const cases = [
   { from: 1, to: 0, parent_size: 0, expected: null },
   { from: 1, to: 0, parent_size: 1, expected: null },
   { from: 1, to: 0, parent_size: 2, expected: null },
-
   { from: 0, to: 1, parent_size: 2, expected: null },
+
   { from: 0, to: 1, parent_size: 3, expected: 2 },
   { from: 0, to: 1, parent_size: 4, expected: 3 },
   { from: 0, to: 1, parent_size: 5, expected: 3 },
@@ -21,13 +21,19 @@ const cases = [
   { from: 0, to: 1, parent_size: 7, expected: 4 },
   { from: 0, to: 1, parent_size: 8, expected: 5 },
 
-  { from: 1, to: 2, parent_size: 3, expected: null },
   { from: 1, to: 2, parent_size: 4, expected: 3 },
   { from: 1, to: 2, parent_size: 5, expected: 4 },
   { from: 1, to: 2, parent_size: 6, expected: 4 },
   { from: 1, to: 2, parent_size: 7, expected: 5 },
   { from: 1, to: 2, parent_size: 8, expected: 5 },
-  { from: 1, to: 2, parent_size: 9, expected: 6 }
+  { from: 1, to: 2, parent_size: 9, expected: 6 },
+
+  { from: 2, to: 3, parent_size: 5, expected: 4 },
+  { from: 2, to: 3, parent_size: 6, expected: 5 },
+  { from: 2, to: 3, parent_size: 7, expected: 5 },
+  { from: 2, to: 3, parent_size: 8, expected: 6 },
+  { from: 2, to: 3, parent_size: 9, expected: 6 },
+  { from: 2, to: 3, parent_size: 10, expected: 7 }
 ];
 
 describe('The `partitionGrow` function', () => {
