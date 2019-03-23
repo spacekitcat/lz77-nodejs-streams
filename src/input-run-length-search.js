@@ -11,8 +11,14 @@ class InputRunLengthSearch {
   }
 
   findMatchingSubString(dictionary) {
-    const partition = partitionShrink(0, this.internalBuffer.length);
-    return dictionary.find(this.internalBuffer.slice(0, partition + 1));
+    // TODO: Expose the length in dictionary (and then also do it in TTC)
+    const dictionarySize = dictionary
+      .getInternalStore()
+      .getInternalStore()
+      .getReadOnlyBuffer().length;
+
+    let internalBufferPartition = this.internalBuffer.slice(0, dictionarySize);
+    return dictionary.find(internalBufferPartition);
   }
 }
 

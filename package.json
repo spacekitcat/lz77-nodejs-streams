@@ -16,6 +16,6 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "tiny-toatie-cache": "^1.0.3"
+    "tiny-toatie-cache": "^1.1.1"
   }
 }

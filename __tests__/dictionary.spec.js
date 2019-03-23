@@ -32,7 +32,7 @@ describe('The `Dictionary` class', () => {
     describe('and the buffer is empty', () => {
       it('should return null', () => {
         const dictionary = new Dictionary();
-        expect(dictionary.find([0x4c])).toBe(null);
+        expect(dictionary.find(Buffer.from([0x4c]))).toBe(null);
       });
     });
 
