@@ -11,11 +11,7 @@ class InputRunLengthSearch {
   }
 
   findMatchingSubString(dictionary) {
-    // TODO: Expose the length in dictionary (and then also do it in TTC)
-    const dictionarySize = dictionary
-      .getInternalStore()
-      .getInternalStore()
-      .getReadOnlyBuffer().length;
+    const dictionarySize = dictionary.getLength();
 
     let internalBufferPartition = this.internalBuffer.slice(0, dictionarySize);
     return dictionary.find(internalBufferPartition);

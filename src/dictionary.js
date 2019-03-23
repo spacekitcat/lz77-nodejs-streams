@@ -14,6 +14,13 @@ class Dictionary {
     this.internalStorage.append(data);
   }
 
+  getLength() {
+    // TODO: Expose the length in TTC
+    return this.getInternalStore()
+      .getInternalStore()
+      .getReadOnlyBuffer().length;
+  }
+
   find(target) {
     return this.internalStorage.find(target);
   }

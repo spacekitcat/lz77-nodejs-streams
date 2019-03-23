@@ -10,6 +10,7 @@ describe('The `Dictionary` class', () => {
           .getInternalStore()
           .getReadOnlyBuffer()
       ).toMatchObject([]);
+      expect(dictionary.getLength()).toBe(0);
     });
   });
 
@@ -25,6 +26,7 @@ describe('The `Dictionary` class', () => {
           .getInternalStore()
           .getReadOnlyBuffer()
       ).toMatchObject(appendData);
+      expect(dictionary.getLength()).toBe(3);
     });
   });
 
