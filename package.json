@@ -7,13 +7,16 @@
   "author": "Lisa Burton",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-jest": "^24.0.0",
     "jest": "^24.0.0"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "babel": "babel src/ --out-dir lib/ --source-maps",
+    "build": "yarn run babel"
   },
   "dependencies": {
     "tiny-toatie-cache": "^1.1.1"
