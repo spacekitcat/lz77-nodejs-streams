@@ -15,6 +15,7 @@
   },
   "scripts": {
     "test": "jest --coverage",
+    "clean": "rm -rf lib/",
     "babel": "babel src/ --out-dir lib/ --source-maps",
     "build": "yarn run babel"
   },
