@@ -11,6 +11,16 @@ class InputRunLengthSearch {
     this.internalBuffer = Buffer.concat([this.internalBuffer, appendList]);
   }
 
+  pop() {
+    const popValue = this.internalBuffer.slice(0, 1);
+    this.internalBuffer = this.internalBuffer.slice(1);
+    return popValue;
+  }
+
+  getLength() {
+    return this.internalBuffer.length;
+  }
+
   findMatchingSubString(dictionary) {
     let maximum = this.internalBuffer.length;
     let partition = partitionShrink(0, maximum);
