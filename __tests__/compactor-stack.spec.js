@@ -54,8 +54,10 @@ describe('The `CompactorStack` class', () => {
         const expectedContent = Buffer.from([0x34]);
         sut.append(expectedContent);
         expect(sut.popNextToken(new Dictionary())).toMatchObject({
-          token: expectedContent
+          token: expectedContent,
+          prefix: null
         });
+        expect(sut.getAvailableBytes()).toBe(0);
       });
     });
 
@@ -65,8 +67,10 @@ describe('The `CompactorStack` class', () => {
         const expectedContent = Buffer.from([0x34, 0x89, 0x22, 0x28]);
         sut.append(expectedContent);
         expect(sut.popNextToken(new Dictionary())).toMatchObject({
-          token: Buffer.from([0x34])
+          token: Buffer.from([0x34]),
+          prefix: null
         });
+        expect(sut.getAvailableBytes()).toBe(3);
       });
     });
 
@@ -82,8 +86,10 @@ describe('The `CompactorStack` class', () => {
             new Dictionary(Buffer.from([0x36, 0x23, 0x67, 0x12]))
           )
         ).toMatchObject({
-          token: Buffer.from([0x97])
+          token: Buffer.from([0x97]),
+          prefix: null
         });
+        expect(sut.getAvailableBytes()).toBe(1);
       });
     });
 
@@ -99,8 +105,27 @@ describe('The `CompactorStack` class', () => {
             new Dictionary(Buffer.from([0x67, 0x12, 0x67, 0x97]))
           )
         ).toMatchObject({
-          token: Buffer.from([0x97])
+          token: Buffer.from([0x97]),
+          prefix: null
         });
+        expect(sut.getAvailableBytes()).toBe(0);
+      });
+    });
+  });
+
+  describe('The `getAvailableBytes` method', () => {
+    describe('when the internal Buffer is empty', () => {
+      it('should return the expected value', () => {
+        const sut = new CompactorStack();
+        expect(sut.getAvailableBytes()).toBe(0);
+      });
+    });
+
+    describe('when the internal Buffer is a single byte', () => {
+      it('should return the expected value', () => {
+        const sut = new CompactorStack();
+        sut.append(Buffer.from([0x56, 0x44]));
+        expect(sut.getAvailableBytes()).toBe(2);
       });
     });
   });

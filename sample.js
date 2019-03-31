@@ -10,10 +10,14 @@ const readline = require('readline').createInterface({
 const dictionary = new Dictionary();
 const compactor = new CompactorStack();
 
-//dictionary.append(Buffer.from('The quick brown fox jumps over the lazy dog.'));
-
 readline.question('Enter a search term: ', response => {
   const input = Buffer.from(response);
   compactor.append(input);
-  console.log(compactor.popNextToken(dictionary));
+  while (compactor.getAvailableBytes() > 0) {
+    const result = compactor.popNextToken(dictionary);
+    if (result.token) {
+      dictionary.append(result.token);
+    }
+    console.log(result);
+  }
 });

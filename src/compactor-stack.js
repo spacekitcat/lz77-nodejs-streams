@@ -13,13 +13,12 @@ class CompactorStack {
     return this.internalBuffer;
   }
 
+  getAvailableBytes() {
+    return this.internalBuffer.length;
+  }
+
   popNextToken(dictionary) {
     if (this.internalBuffer.length > 0) {
-      let token = this.internalBuffer.slice(
-        this.internalBuffer.length - 1,
-        this.internalBuffer.length
-      );
-
       let searchPartition = this.internalBuffer.slice(
         0,
         this.internalBuffer.length - 1
@@ -27,16 +26,24 @@ class CompactorStack {
 
       const result = findNextToken(dictionary, searchPartition);
 
+      let token;
       if (!result.value) {
         token = this.internalBuffer.slice(0, 1);
+        this.internalBuffer = this.internalBuffer.slice(
+          1,
+          this.internalBuffer.length
+        );
       } else {
-        if (result.length < this.internalBuffer.length) {
-          token = this.internalBuffer.slice(result.length, result.length + 1);
-        }
+        token = this.internalBuffer.slice(result.length, result.length + 1);
+        this.internalBuffer = this.internalBuffer.slice(
+          result.length + 1,
+          this.internalBuffer.length
+        );
       }
 
       return {
-        token: token
+        token: token,
+        prefix: null
       };
     }
 
