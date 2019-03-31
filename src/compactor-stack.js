@@ -27,6 +27,7 @@ class CompactorStack {
       const result = findNextToken(dictionary, searchPartition);
 
       let token;
+      let prefix = null;
       if (!result.value) {
         token = this.internalBuffer.slice(0, 1);
         this.internalBuffer = this.internalBuffer.slice(
@@ -39,11 +40,12 @@ class CompactorStack {
           result.length + 1,
           this.internalBuffer.length
         );
+        prefix = result;
       }
 
       return {
-        token: token,
-        prefix: null
+        token,
+        prefix
       };
     }
 

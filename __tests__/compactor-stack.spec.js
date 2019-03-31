@@ -87,7 +87,7 @@ describe('The `CompactorStack` class', () => {
           )
         ).toMatchObject({
           token: Buffer.from([0x97]),
-          prefix: null
+          prefix: { offset: 1, length: 2 }
         });
         expect(sut.getAvailableBytes()).toBe(1);
       });
@@ -106,7 +106,7 @@ describe('The `CompactorStack` class', () => {
           )
         ).toMatchObject({
           token: Buffer.from([0x97]),
-          prefix: null
+          prefix: { offset: 3, length: 3 }
         });
         expect(sut.getAvailableBytes()).toBe(0);
       });
