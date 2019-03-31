@@ -10,7 +10,17 @@ describe('The `Dictionary` class', () => {
           .getInternalStore()
           .getReadOnlyBuffer()
       ).toMatchObject([]);
-      expect(dictionary.getLength()).toBe(0);
+    });
+
+    describe('and initial data is specified', () => {
+      const expectedBuffer = Buffer.from([0x45]);
+      const dictionary = new Dictionary(expectedBuffer);
+      expect(
+        dictionary
+          .getInternalStore()
+          .getInternalStore()
+          .getReadOnlyBuffer()
+      ).toMatchObject(expectedBuffer);
     });
   });
 

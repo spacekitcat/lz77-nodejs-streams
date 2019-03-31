@@ -1,9 +1,12 @@
 import ToatieCache from 'tiny-toatie-cache';
 
 class Dictionary {
-  constructor() {
+  constructor(initialBufferContent) {
     const cacheStorageSize = 1234456;
     this.internalStorage = ToatieCache.build(cacheStorageSize);
+    if (initialBufferContent) {
+      this.internalStorage.append(initialBufferContent);
+    }
   }
 
   getInternalStore() {
