@@ -2,7 +2,7 @@ import ToatieCache from 'tiny-toatie-cache';
 
 class Dictionary {
   constructor(initialBufferContent) {
-    const cacheStorageSize = 1234456;
+    const cacheStorageSize = 1048576;
     this.internalStorage = ToatieCache.build(cacheStorageSize);
     if (initialBufferContent) {
       this.internalStorage.append(initialBufferContent);
