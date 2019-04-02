@@ -20,6 +20,7 @@
     "build": "yarn run babel"
   },
   "dependencies": {
-    "tiny-toatie-cache": "^1.1.1"
+    "tiny-toatie-cache": "^1.2.1",
+    "cli-spinner": "^0.2.10"
   }
 }
