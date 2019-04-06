@@ -21,7 +21,7 @@ class Dictionary {
     // TODO: Expose the length in TTC
     return this.getInternalStore()
       .getInternalStore()
-      .getReadOnlyBuffer().length;
+      .getBufferCopy().length;
   }
 
   find(target) {

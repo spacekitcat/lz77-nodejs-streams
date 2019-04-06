@@ -2,6 +2,7 @@
 const LibzStream = require('./lib/libz-stream').default;
 const fs = require('fs');
 const process = require('process');
+const _colors = require('colors');
 const _cliProgress = require('cli-progress');
 
 let filePath = process.argv[2];
@@ -11,6 +12,11 @@ if (!filePath) {
 }
 let fileReadStream = fs.createReadStream(filePath, { highWaterMark: 1024 });
 const statsBefore = fs.statSync(filePath);
+
+const megaBytes = bytes => Math.round((bytes / 1024 / 1024) * 100) / 100;
+
+const megaBytesDisplayString = (bytes, unitLabel = 'MB') =>
+  `${megaBytes(bytes)} ${unitLabel}`;
 
 let compressorTransformer = new LibzStream();
 let byteCount = 0;
@@ -24,11 +30,29 @@ const progressBar = new _cliProgress.Bar({
   position: 'right',
   etaBuffer: 100,
   format:
-    '[{bar}] {percentage}% | ETA: {eta}s | {value}/{total} | Saved: {saving} MB (theoretical)'
+    _colors.italic(' {bar} ') +
+    _colors.bold(' {percentage}% ') +
+    _colors.bold(' ' + _colors.blue(' ETA ') + '{eta}s ') +
+    _colors.bold(' ' + _colors.blue(' SAVING ') + '{saving} ') +
+    _colors.bold(' ' + _colors.blue(' SPEED ') + '{speed} ') +
+    _colors.bold(' ' + _colors.blue(' PROGRESS ') + '{value}/{total} MB')
 });
-progressBar.start(statsBefore.size, 0, { saving: 0 });
+progressBar.start(megaBytes(statsBefore.size), 0, { saving: '�', speed: '�' });
+
+let updateSpeedAccumulator = 0;
+let updateSpeedLastUpdate = 0;
+let currentUpdateSpeed = 0;
+const updateSpeed = diff => {
+  if (updateSpeedLastUpdate < Date.now() - 1000) {
+    currentUpdateSpeed = updateSpeedAccumulator;
+    updateSpeedAccumulator = 0;
+    updateSpeedLastUpdate = Date.now();
+  }
+  updateSpeedAccumulator += diff;
+};
 
 compressorTransformer.on('data', data => {
+  const oldByteCount = byteCount;
   byteCount += 1;
   if (data.prefix) {
     byteCount += data.prefix.length;
@@ -36,8 +60,10 @@ compressorTransformer.on('data', data => {
       saving += data.prefix.length - 3;
     }
   }
-  progressBar.update(byteCount, {
-    saving: Math.round((saving / 1024 / 1024) * 100) / 100
+  updateSpeed(byteCount - oldByteCount);
+  progressBar.update(megaBytes(byteCount), {
+    saving: megaBytesDisplayString(saving),
+    speed: megaBytesDisplayString(currentUpdateSpeed, 'MB/s')
   });
 });
 

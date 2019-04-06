@@ -8,8 +8,8 @@ describe('The `Dictionary` class', () => {
         dictionary
           .getInternalStore()
           .getInternalStore()
-          .getReadOnlyBuffer()
-      ).toMatchObject([]);
+          .getBufferCopy()
+      ).toMatchObject(Buffer.from([]));
     });
 
     describe('and initial data is specified', () => {
@@ -19,7 +19,7 @@ describe('The `Dictionary` class', () => {
         dictionary
           .getInternalStore()
           .getInternalStore()
-          .getReadOnlyBuffer()
+          .getBufferCopy()
       ).toMatchObject(expectedBuffer);
     });
   });
@@ -34,7 +34,7 @@ describe('The `Dictionary` class', () => {
         dictionary
           .getInternalStore()
           .getInternalStore()
-          .getReadOnlyBuffer()
+          .getBufferCopy()
       ).toMatchObject(appendData);
       expect(dictionary.getLength()).toBe(3);
     });
