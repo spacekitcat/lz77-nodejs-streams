@@ -1239,11 +1239,6 @@ cli-progress@^2.1.1:
     colors "^1.1.2"
     string-width "^2.1.1"
 
-cli-spinners@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.0.0.tgz#4b078756fc17a8f72043fdc9f1f14bf4fa87e2df"
-  integrity sha512-yiEBmhaKPPeBj7wWm4GEdtPZK940p9pl3EANIrnJ3JnvWyrPjcFcsEq6qRUuQ7fzB0+Y82ld3p6B34xo95foWw==
-
 cliui@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-4.1.0.tgz#348422dbe82d800b3022eef4f6ac10bf2e4d1b49"
@@ -1253,10 +1248,10 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
-cloakroom-smart-buffer-proxy@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/cloakroom-smart-buffer-proxy/-/cloakroom-smart-buffer-proxy-2.1.1.tgz#eb46d78b1726515d99b422b8349462d0da57a9cf"
-  integrity sha512-dhJnykJ9YxdlVEMNaCYlZHy0KUGURlAcWduV81sUtUjWekkEiP9vm5xzAFpiOBbS+ZtrBj0T6OcZP3VUcI65cg==
+cloakroom-smart-buffer-proxy@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/cloakroom-smart-buffer-proxy/-/cloakroom-smart-buffer-proxy-3.0.1.tgz#ac7adc058be99d0d67ab939bf5006bd595bc0170"
+  integrity sha512-9uQVvKPoe/pt3p+Kn8FGWPCEoXECS1ePGtg9NHh8jgXGj0PPXLwHlGFYxcG/u6yFt2BOGRrGJ62GMdv+XgO+uQ==
 
 co@^4.6.0:
   version "4.6.0"
@@ -4085,12 +4080,12 @@ throat@^4.0.0:
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
-tiny-toatie-cache@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/tiny-toatie-cache/-/tiny-toatie-cache-1.2.1.tgz#6f96b68bce69d572db90b6861c3bc10539ac2ffd"
-  integrity sha512-2GUf+0mN55UvqVEJPo2EDCkYjV65/ftamAX29Qos4+lLicJ/vMYn3AUPUuAioJdmXt9hb0IVdxDjVjpx7kNoog==
+tiny-toatie-cache@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/tiny-toatie-cache/-/tiny-toatie-cache-1.2.4.tgz#e837dd384c65ca88e8ca14546317efa2d9d2a131"
+  integrity sha512-WYcaS2tPQ9JB3q3m20aGVmEiz7wPXRYvufZRQmbdQBCDr1ws7Hs/dzEfADIIBkovZyVJOLAw19JxPZWw2KJzgQ==
   dependencies:
-    cloakroom-smart-buffer-proxy "^2.1.1"
+    cloakroom-smart-buffer-proxy "^3.0.1"
     metrohash "^2.5.1"
 
 tmpl@1.0.x:

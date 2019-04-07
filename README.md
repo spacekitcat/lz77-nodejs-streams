@@ -12,11 +12,11 @@ I've implemented the compression stream and it uses [Tiny Toatie Cache](https://
 
 ```bash
 lz77-nodejs-streams ‹master*› % node sample.js resources/512m-test.txt
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░] 67% | ETA: 266s | 362268672/536870912 | Saved: 344.13 MB (theoretical)
+PROGRESS   ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░  41%   ETA 64s   SAVING 209.98 MB   SPEED 5.61 MB/s   PROGRESS 210.8/512 MB
 
-    ... 266 seconds pass ...
+    ... 'N' seconds pass ...
 
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100% | ETA: 1s | 536870912/536870912 | Saved: 510 MB (theoretical)
+PROGRESS   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%   ETA 1s   SAVING 510 MB   SPEED 3.5 MB/s   PROGRESS 512/512 MB
 
 I compressed the devil outta resources/512m-test.txt
 

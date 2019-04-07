@@ -30,6 +30,7 @@ const progressBar = new _cliProgress.Bar({
   position: 'right',
   etaBuffer: 100,
   format:
+    _colors.bold(_colors.blue('PROGRESS ') + ' ') +
     _colors.italic(' {bar} ') +
     _colors.bold(' {percentage}% ') +
     _colors.bold(' ' + _colors.blue(' ETA ') + '{eta}s ') +
